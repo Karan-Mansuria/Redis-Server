@@ -573,12 +573,22 @@ void setup_server_state(void)
     log_event("READY", "server", startup_msg);
 
     printf("\n");
-    printf("  ╔══════════════════════════════════════╗\n");
-    printf("  ║       Mini Redis Server v1.0         ║\n");
-    printf("  ║   Listening on port %-5d             ║\n", SERVER_PORT);
-    printf("  ║   Connect: telnet localhost %d       ║\n", SERVER_PORT);
-    printf("  ║   Stop:    Ctrl+C                    ║\n");
-    printf("  ╚══════════════════════════════════════╝\n\n");
+    printf("                _._                                                  \n");
+    printf("           _.-``__ ''-._                                             \n");
+    printf("      _.-``    `.  `_.  ''-._           Mini Redis Server v1.0       \n");
+    printf("  .-`` .-```.  ```\\/    _.,_ ''-._                                   \n");
+    printf(" (    '      ,       .-`  | `,    )         Mode: Standalone         \n");
+    printf(" |`-._`-...-` __...-.``-._|'` _.-'|         Port: %d                 \n", SERVER_PORT);
+    printf(" |    `-._   `._    /     _.-'    |                                  \n");
+    printf("  `-._    `-._  `-./  _.-'    _.-'                                   \n");
+    printf(" |`-._`-._    `-.__.-'    _.-'_.-'|         To connect:              \n");
+    printf(" |    `-._`-._        _.-'_.-'    |         > nc 127.0.0.1 %d        \n", SERVER_PORT);
+    printf("  `-._    `-._`-.__.-'_.-'    _.-'                                   \n");
+    printf("      `-._    `-.__.-'    _.-'              Stop: Ctrl+C             \n");
+    printf("          `-._        _.-'                                           \n");
+    printf("              `-.__.-'                                               \n");
+
+    printf("\n");
 
 }
 
