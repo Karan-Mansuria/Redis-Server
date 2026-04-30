@@ -37,15 +37,15 @@ typedef struct {
 
 HashTable *ht_create(void);
 void       ht_destroy(HashTable *ht);
-int        ht_set(HashTable *ht, char *key, char *value);
-char      *ht_get(HashTable *ht, char *key);
-int        ht_delete(HashTable *ht, char *key);
-int        ht_exists(HashTable *ht, char *key);
+int        ht_set(HashTable *ht, const char *key, const char *value);
+char      *ht_get(HashTable *ht, const char *key);
+int        ht_delete(HashTable *ht, const char *key);
+int        ht_exists(HashTable *ht, const char *key);
 
 //  Expiry Operations   
 
-void       ht_set_expiry(HashTable *ht, char *key, time_t expiry);
-time_t     ht_get_expiry(HashTable *ht, char *key);
+void       ht_set_expiry(HashTable *ht, const char *key, time_t expiry);
+time_t     ht_get_expiry(HashTable *ht, const char *key);
 void       ht_purge_expired(HashTable *ht);      // Delete all expired entries
 
 //  Persistence Operations   

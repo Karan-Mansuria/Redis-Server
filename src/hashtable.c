@@ -100,7 +100,7 @@ void ht_destroy(HashTable *ht)
     free(ht);
 }
 
-int ht_set(HashTable *ht, char *key, char *value)
+int ht_set(HashTable *ht, const char *key, const char *value)
 {
     unsigned int idx = hash(key);
     Entry *cur = ht->buckets[idx];
@@ -130,7 +130,7 @@ int ht_set(HashTable *ht, char *key, char *value)
     return 0;
 }
 
-char *ht_get(HashTable *ht, char *key)
+char *ht_get(HashTable *ht, const char *key)
 {
     unsigned int idx = hash(key);
     Entry *cur = ht->buckets[idx];
@@ -143,7 +143,7 @@ char *ht_get(HashTable *ht, char *key)
     return NULL;
 }
 
-int ht_delete(HashTable *ht, char *key)
+int ht_delete(HashTable *ht, const char *key)
 {
     unsigned int idx = hash(key);
     Entry *cur  = ht->buckets[idx];
@@ -169,7 +169,7 @@ int ht_delete(HashTable *ht, char *key)
     return 0;   // Key not found 
 }
 
-int ht_exists(HashTable *ht, char *key)
+int ht_exists(HashTable *ht, const char *key)
 {
     unsigned int idx = hash(key);
     Entry *cur = ht->buckets[idx];
@@ -186,7 +186,7 @@ int ht_exists(HashTable *ht, char *key)
    Expiry Operations
   ---------------------------------------------------------------- */
 
-void ht_set_expiry(HashTable *ht, char *key, time_t expiry)
+void ht_set_expiry(HashTable *ht, const char *key, time_t expiry)
 {
     unsigned int idx = hash(key);
     Entry *cur = ht->buckets[idx];
@@ -201,7 +201,7 @@ void ht_set_expiry(HashTable *ht, char *key, time_t expiry)
     // Key not found silent no-op
 }
 
-time_t ht_get_expiry(HashTable *ht, char *key)
+time_t ht_get_expiry(HashTable *ht, const char *key)
 {
     unsigned int idx = hash(key);
     Entry *cur = ht->buckets[idx];
