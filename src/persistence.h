@@ -1,34 +1,12 @@
-/*
- * =============================================================================
- * persistence.h — Persistence layer interface (SAVE, BGSAVE, load_snapshot)
- * Location: mini-redis/src/persistence.h
- * =============================================================================
- *
- * This header is included by:
- *   - server.c      (calls save_snapshot at shutdown, load_snapshot at startup)
- *   - commands/dispatcher.c (calls save_snapshot for SAVE, bgsave_async for BGSAVE)
- *   - persistence.c (implements these functions)
- *
- * OS CONCEPTS:
- *   Concept 2 — File Locking  : save_snapshot and load_snapshot use flock()
- *   Concept 6 — IPC (fork+pipe): bgsave_async forks a child process
- * =============================================================================
- */
-
 #ifndef PERSISTENCE_H
 #define PERSISTENCE_H
 
-#include <stddef.h>     /* size_t */
-#include "hashtable.h"  /* HashTable */
+#include <stddef.h> 
+#include "hashtable.h"  
 
 /*
  * save_snapshot — Synchronous snapshot to disk with exclusive file lock.
- *
- * Writes all current key-value-expiry entries to `filepath` in text format:
- *   # Mini-Redis snapshot — 2026-04-30 12:00:00
- *   key1 value1 0
- *   key2 value2 1719000000
- *
+ 
  * OS Concept 2: Acquires flock(LOCK_EX) before writing. Blocks if another
  * writer (e.g., a concurrent BGSAVE child) holds the lock.
  *

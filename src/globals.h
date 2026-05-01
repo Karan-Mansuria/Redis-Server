@@ -1,15 +1,10 @@
 // =============================================================================
 // globals.h — Shared global variable declarations
-// Location: mini-redis/globals.h
-// =============================================================================
-//
-// WHY THIS FILE EXISTS:
 // db, db_mutex, and shutdown_flag are defined ONCE in server.c.
 // Every other file that needs them uses `extern` to say "this variable
 // exists somewhere else — find it at link time."
 // Without this file, every .c that needs db would have to write its own
 // extern declarations, which is error-prone and messy.
-//
 // RULE: This file only has extern declarations and #defines.
 //       Never define (allocate) variables here — only declare them.
 // =============================================================================

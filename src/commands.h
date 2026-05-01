@@ -1,9 +1,4 @@
 /*
- * =============================================================================
- * commands.h — Umbrella header for the commands subsystem
- * Location: mini-redis/src/commands.h
- * =============================================================================
- *
  * server.c includes this single header to get access to dispatch_command(),
  * which is the only function it needs from the commands/ subsystem.
  *

@@ -1,29 +1,3 @@
-// =============================================================================
-// commands/strings.c — String operation commands: INCR, APPEND
-// Location: mini-redis/commands/strings.c
-// =============================================================================
-//
-// OS CONCEPTS DEMONSTRATED IN THIS FILE:
-//   Concept 1 — Role-Based Authorization : WRITER required for both commands
-//   Concept 3 — Concurrency Control      : mutex wraps the full operation
-//   Concept 4 — Data Consistency         : INCR's read-modify-write is atomic
-//
-// WHY INCR IS THE BEST DEMONSTRATION OF DATA CONSISTENCY:
-//
-// Imagine two clients both send "INCR counter" at the exact same millisecond.
-// Without a mutex, this happens:
-//   Thread A reads  counter = "5"
-//   Thread B reads  counter = "5"   ← sees stale value before A writes back
-//   Thread A writes counter = "6"
-//   Thread B writes counter = "6"   ← lost update! Should be 7
-//
-// With db_mutex, only ONE thread can be inside INCR at a time:
-//   Thread A locks, reads "5", writes "6", unlocks
-//   Thread B locks (after A), reads "6", writes "7", unlocks
-//   Result: counter = 7 ✓  — no lost update
-//
-// This is atomic increment. This is what databases mean by "transaction".
-// =============================================================================
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -40,15 +14,13 @@
 // Atomically reads the current value, increments it, writes it back.
 // The entire read-modify-write sequence is inside a single mutex lock,
 // making it impossible for another thread to interleave.
-//
-// OS Concept 3 + 4: The classic demonstration of why mutexes exist.
 // =============================================================================
 void cmd_incr(ClientSession *session, ParsedCommand *cmd,
               char *response_buf, size_t response_size) {
 
     if (!has_permission(session, WRITER)) {
         snprintf(response_buf, response_size,
-                 "-ERR permission denied — INCR requires WRITER or ADMIN role\r\n");
+                 "-ERR permission denied - INCR requires WRITER or ADMIN role\r\n");
         return;
     }
 
@@ -101,17 +73,9 @@ void cmd_incr(ClientSession *session, ParsedCommand *cmd,
 
 // =============================================================================
 // cmd_append — APPEND key value
-//
 // Appends a string to the existing value at key.
 // If key doesn't exist, it's created with just the appended value (like SET).
 // Returns the new total length.
-//
-// Example:
-//   SET   greeting "Hello"     → "Hello"
-//   APPEND greeting ", World"  → "Hello, World"  (returns :12)
-//
-// OS Concept 3 + 4: Mutex prevents another thread from modifying the key
-//                   between our read and write.
 // =============================================================================
 void cmd_append(ClientSession *session, ParsedCommand *cmd,
                 char *response_buf, size_t response_size) {
@@ -130,10 +94,10 @@ void cmd_append(ClientSession *session, ParsedCommand *cmd,
 
     char *existing = ht_get(db, key);
 
-    char new_val[8192];  // 8KB max value — sufficient for project scope
-
+    char new_val[8192];  // 8KB max value
+    
     if (existing == NULL) {
-        // Key doesn't exist — APPEND behaves like SET
+        // Key doesn't exist - APPEND behaves like SET
         strncpy(new_val, to_append, sizeof(new_val) - 1);
         new_val[sizeof(new_val) - 1] = '\0';
     } else {

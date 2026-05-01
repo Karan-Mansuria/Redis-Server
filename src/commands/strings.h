@@ -1,10 +1,3 @@
-/*
- * =============================================================================
- * strings.h — String operation commands header
- * Location: mini-redis/commands/strings.h
- * =============================================================================
- */
-
 #ifndef STRINGS_H
 #define STRINGS_H
 

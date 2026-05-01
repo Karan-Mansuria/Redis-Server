@@ -1,21 +1,3 @@
-// =============================================================================
-// commands/keyval.c — Core key-value commands: SET, GET, DEL, EXISTS
-// Location: mini-redis/commands/keyval.c
-// =============================================================================
-//
-// OS CONCEPTS DEMONSTRATED IN THIS FILE:
-//   Concept 1 — Role-Based Authorization : has_permission() before every write
-//   Concept 3 — Concurrency Control      : pthread_mutex_lock/unlock on db
-//   Concept 4 — Data Consistency         : mutex prevents dirty reads + lost updates
-//
-// RESPONSE FORMAT (simplified Redis protocol):
-//   +OK\r\n              — simple success string
-//   -ERR message\r\n     — error
-//   $5\r\nAlice\r\n      — bulk string (length prefix then value)
-//   $-1\r\n              — nil / key not found
-//   :1\r\n               — integer reply
-// =============================================================================
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -26,22 +8,9 @@
 #include "../auth.h"
 #include "../globals.h"
 
-// =============================================================================
-// cmd_set — SET key value
-//
-// Stores a key-value pair in the hash table.
-// If the key already exists, its value is overwritten.
-// Expiry time is NOT reset by SET — if the key had a TTL, it keeps it.
-// This matches real Redis behaviour.
-//
-// OS Concept 1: Requires WRITER role or above
-// OS Concept 3: Locks db_mutex before writing to db
-// OS Concept 4: Mutex prevents another thread from reading a half-written value
-// =============================================================================
 void cmd_set(ClientSession *session, ParsedCommand *cmd,
              char *response_buf, size_t response_size) {
 
-    // Permission check — READERs cannot store data
     // ADMIN(0) and WRITER(1) can. has_permission checks session->role <= WRITER.
     if (!has_permission(session, WRITER)) {
         snprintf(response_buf, response_size,
@@ -60,9 +29,7 @@ void cmd_set(ClientSession *session, ParsedCommand *cmd,
     }
 
     // ── CRITICAL SECTION START ────────────────────────────────────────────────
-    // OS Concept 3 + 4: Lock the mutex before touching the shared hash table.
-    // Without this lock, two threads doing SET simultaneously could corrupt
-    // the linked list inside the hash table bucket.
+
     pthread_mutex_lock(&db_mutex);
 
     int result = ht_set(db, key, value);
@@ -77,18 +44,7 @@ void cmd_set(ClientSession *session, ParsedCommand *cmd,
     }
 }
 
-// =============================================================================
-// cmd_get — GET key
-//
-// Returns the value stored at key as a bulk string.
-// Returns $-1 (nil) if the key does not exist.
-// Automatically skips keys whose expiry_time has passed — the expiry thread
-// will clean them up asynchronously, but GET must not return stale data.
-//
-// OS Concept 1: READER role sufficient — all authenticated users can GET
-// OS Concept 3: Locks db_mutex even for reads (prevents dirty reads)
-// OS Concept 4: A reader must never see a value that is mid-write by another thread
-// =============================================================================
+
 void cmd_get(ClientSession *session, ParsedCommand *cmd,
              char *response_buf, size_t response_size) {
 
@@ -135,24 +91,14 @@ void cmd_get(ClientSession *session, ParsedCommand *cmd,
     snprintf(response_buf, response_size, "Value: %s\r\n", value_copy);
 }
 
-// =============================================================================
-// cmd_del — DEL key
-//
-// Deletes a key from the hash table.
-// Returns :1 if the key existed and was deleted, :0 if key was not found.
-// Restricted to ADMIN only — deletion is a destructive irreversible operation.
-//
-// OS Concept 1: ADMIN role required — most restrictive permission
-// OS Concept 3: Mutex prevents deleting a key another thread is mid-read on
-// OS Concept 4: No thread should read a key that is being deleted simultaneously
-// =============================================================================
+
 void cmd_del(ClientSession *session, ParsedCommand *cmd,
              char *response_buf, size_t response_size) {
 
-    // Deletion is admin-only — writers can SET but cannot destroy data
+    // Deletion is admin-only - writers can SET but cannot destroy data
     if (!has_permission(session, ADMIN)) {
         snprintf(response_buf, response_size,
-                 "-ERR permission denied — DEL requires ADMIN role\r\n");
+                 "-ERR permission denied - DEL requires ADMIN role\r\n");
         return;
     }
 
@@ -174,16 +120,7 @@ void cmd_del(ClientSession *session, ParsedCommand *cmd,
     }
 }
 
-// =============================================================================
-// cmd_exists — EXISTS key
-//
-// Returns :1 if the key exists and has not expired, :0 otherwise.
-// This is a pure read — no modification to the database.
-//
-// OS Concept 1: READER role sufficient
-// OS Concept 3: Still locks mutex — a read without a lock could see a key
-//               that is being deleted by another thread mid-operation
-// =============================================================================
+
 void cmd_exists(ClientSession *session, ParsedCommand *cmd,
                 char *response_buf, size_t response_size) {
 

@@ -27,7 +27,7 @@ extern User user_table[MAX_USERS];
 extern int  user_count;
 
 // Functions
-int  load_users_from_file(const char *filepath);  // Returns 1 on success, 0 on fail
+int  load_users_from_file(const char *filepath );  // Returns 1 on success, 0 on fail
 int  authenticate(ClientSession *session, char *username, char *password);
 int  has_permission(ClientSession *session, Role required_role);
 

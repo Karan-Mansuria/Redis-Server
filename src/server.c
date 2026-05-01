@@ -1,34 +1,10 @@
 /*
- * =============================================================================
- * server.c — Mini Redis Server
- * =============================================================================
- *
- * EGC 301P Operating Systems Lab Mini Project
- *
- * This file is the heart of the Mini Redis server. It implements:
- *   - OS Concept 1: Role-Based Authorization  (via auth.c + users.conf)
- *   - OS Concept 2: File Locking              (via persistence.c + flock)
- *   - OS Concept 3: Concurrency Control       (pthreads + semaphore)
- *   - OS Concept 4: Data Consistency          (db_mutex on every db access)
- *   - OS Concept 5: Socket Programming        (TCP server on port 6379)
- *   - OS Concept 6: IPC                       (fork + pipe in BGSAVE)
- *
+
  * Architecture (mirrors real Redis):
  *   Main thread  →  accept() loop  →  pthread_create() per client
  *   Each client thread  →  auth gate  →  command dispatcher  →  db (mutex-protected)
  *   Background expiry thread  →  purges expired keys every second
  *   BGSAVE  →  fork() child saves to disk  →  notifies parent via pipe
- *
- * Compile:
- *   gcc -Wall -Wextra -pthread -g -o mini-redis \
- *       server.c commands.c hashtable.c auth.c persistence.c expiry.c
- *
- * Run:
- *   ./mini-redis
- *
- * Connect (test):
- *   telnet localhost 6379
- * =============================================================================
  */
 
 /* ─── Standard headers ───────────────────────────────────────────────────── */
@@ -57,10 +33,8 @@
 #include "persistence.h"
 #include "expiry.h"
 
-/* =============================================================================
- * CONFIGURATION CONSTANTS
- * Change these to adjust server behaviour.
- * ============================================================================= */
+/* ─── Configuration Constants ──────────────────────────────────────────── */
+
 #define SERVER_PORT       6379                    /* Default Redis port                  */
 #define MAX_CLIENTS       100                     /* Semaphore limit - max live clients  */
 #define BACKLOG           511                     /* TCP listen() backlog queue size     */
@@ -71,35 +45,19 @@
 #define LOG_FILE          "server.log"            /* Server activity log                 */
 #define CLIENT_SEM_NAME   "/mini-redis-clients"   /* Named semaphore — macOS compatible  */
 
-/* =============================================================================
- * GLOBAL SHARED STATE
- *
- * These variables are shared across ALL threads.
- * Every access to `db` MUST be protected by `db_mutex`.
- * This is the core of OS Concept 3 (Concurrency) and Concept 4 (Consistency).
- * ============================================================================= */
+
+/* ─── Global Shared State ────────────────────────────────────────────────── */
 
 /* The in-memory key-value store — custom hash table, built from scratch */
 HashTable *db;
 
 /*
- * db_mutex — the single most important synchronization primitive.
- *
- * WHY: Without this, two threads doing INCR simultaneously would both read
- * value "5", both compute "6", and both write "6". The counter increments
- * only once instead of twice. That is a lost update — a data consistency bug.
- *
- * HOW: Every command handler calls pthread_mutex_lock(&db_mutex) before
- * touching `db` and pthread_mutex_unlock(&db_mutex) immediately after.
- * Only one thread can hold this lock at a time. Others block until it releases.
- *
- * OS Concept 3: Concurrency Control
- * OS Concept 4: Data Consistency
+For Data Consistency and Data Concurrency
  */
 pthread_mutex_t db_mutex = PTHREAD_MUTEX_INITIALIZER;
 
 /*
- * shutdown_flag — set to 1 by the SIGINT handler (Ctrl+C).
+ * shutdown_flag - set to 1 by the SIGINT handler (Ctrl+C).
  * The accept() loop and the expiry thread both check this flag to exit cleanly.
  * Protected by shutdown_mutex to avoid a race condition on the flag itself.
  */
@@ -107,32 +65,21 @@ volatile sig_atomic_t shutdown_flag = 0;
 pthread_mutex_t shutdown_mutex = PTHREAD_MUTEX_INITIALIZER;
 
 /*
- * client_semaphore — limits the number of simultaneously connected clients.
- *
- * WHY: Without a cap, a flood of connections would spawn thousands of threads,
- * exhausting system memory and crashing the server (a resource exhaustion attack).
- *
- * HOW: Initialized to MAX_CLIENTS (100). sem_wait() decrements it before creating
- * a thread — if it reaches 0 the main thread blocks, refusing new connections
- * until an existing client disconnects and calls sem_post().
- *
- * OS Concept 3: Concurrency Control (via semaphore)
+For Concurrency Control
  */
-sem_t *client_semaphore;   /* Named semaphore — sem_open() on macOS */
+sem_t *client_semaphore;   /* Named semaphore - sem_open() on macOS */
 
-/* Log file handle — opened once at startup, closed at shutdown */
+/* Log file handle - opened once at beginning, closed at shutdown */
 static FILE *log_fp = NULL;
 
-/* Server socket fd — global so sigint_handler can close it */
+/* Server socket fd - global so sigint_handler can close it */
 static int server_fd = -1;
 
-/* =============================================================================
- * LOGGING
- *
- * log_event() is thread-safe because fprintf to a FILE* is internally buffered
- * and we flush after every write. For production you would use a mutex here too,
- * but for this project the OS guarantees atomic writes for small writes on Linux.
- * ============================================================================= */
+
+/* LOGGING 
+ * log_event is thread-safe because fprintf to a FILE is internally buffered
+ * and we flush after every write
+ */
 void log_event(const char *level, const char *username, const char *message) {
     time_t now = time(NULL);
     struct tm *t = localtime(&now);
@@ -187,16 +134,11 @@ void sigint_handler(int sig) {
 
 /* =============================================================================
  * CLIENT HANDLER THREAD
- *
+ 
  * This function runs in its own pthread for every connected client.
  * It is the client's entire lifetime on the server:
  *   connect → receive commands → dispatch → send responses → disconnect
- *
- * OS Concept 3: This function IS the concurrency — multiple instances run
- *               simultaneously, one per client.
- * OS Concept 1: Every command checks has_permission() via the dispatcher.
- * OS Concept 4: Every db access inside handlers is mutex-protected.
- *
+  
  * arg: pointer to a heap-allocated ClientSession (we own it, we free it)
  * ============================================================================= */
 void *client_handler(void *arg) {
@@ -232,10 +174,10 @@ void *client_handler(void *arg) {
     /*
      * ── MAIN COMMAND LOOP ──────────────────────────────────────────────────
      * Stay in this loop until:
-     *   (a) The client disconnects (recv returns 0)
-     *   (b) A network error occurs (recv returns -1)
-     *   (c) The client sends QUIT
-     *   (d) The server is shutting down (shutdown_flag == 1)
+     *    The client disconnects (recv returns 0)
+     *    A network error occurs (recv returns -1)
+     *    The client sends QUIT
+     *    The server is shutting down (shutdown_flag == 1)
      */
     while (!shutdown_flag) {
         memset(recv_buf, 0, sizeof(recv_buf));
@@ -321,8 +263,6 @@ void *client_handler(void *arg) {
      * sem_post() increments the semaphore — signals that one slot is free.
      * If the main thread is blocked in sem_wait() because MAX_CLIENTS was
      * reached, this wakes it up to accept the next connection.
-     *
-     * OS Concept 3: Concurrency Control (semaphore release)
      */
     sem_post(client_semaphore);
 
@@ -346,20 +286,11 @@ void *client_handler(void *arg) {
  *
  * Creates, configures, and binds the TCP server socket.
  * Returns the server file descriptor on success, -1 on failure.
- *
- * This is OS Concept 5: Socket Programming — the server-side setup.
+
  * ============================================================================= */
 static int init_server_socket(void) {
     int fd;
 
-    /*
-     * socket(AF_INET, SOCK_STREAM, 0)
-     *   AF_INET    = IPv4
-     *   SOCK_STREAM = TCP (reliable, ordered, stream-based)
-     *   0          = default protocol for SOCK_STREAM (which is TCP)
-     *
-     * Returns a file descriptor — just like open() for files.
-     */
     fd = socket(AF_INET, SOCK_STREAM, 0);
     if (fd < 0) {
         perror("[SERVER] socket() failed");
@@ -381,15 +312,6 @@ static int init_server_socket(void) {
         return -1;
     }
 
-    /*
-     * bind() — assigns the socket to an address (IP + port).
-     *   sin_family      = AF_INET (IPv4)
-     *   sin_addr.s_addr = INADDR_ANY (accept connections on any network interface)
-     *   sin_port        = htons(PORT) — host-to-network byte order conversion
-     *
-     * htons() is necessary because network byte order is big-endian but x86
-     * CPUs are little-endian. htons("host to network short") converts correctly.
-     */
     struct sockaddr_in address;
     memset(&address, 0, sizeof(address));
     address.sin_family      = AF_INET;

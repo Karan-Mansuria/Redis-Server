@@ -1,8 +1,3 @@
-// =============================================================================
-// commands/ttl.c — TTL/expiry commands: EXPIRE, TTL
-// Location: mini-redis/commands/ttl.c
-// =============================================================================
-//
 // HOW TTL WORKS IN THIS PROJECT (three-part system):
 //
 //   Part 1 — EXPIRE command (this file):
@@ -33,13 +28,10 @@
 #include "../globals.h"
 
 // =============================================================================
-// cmd_expire — EXPIRE key seconds
+// cmd_expire - EXPIRE key seconds
 //
 // Sets the expiry_time field of the Entry for `key` to time(NULL) + seconds.
 // After that timestamp passes, the key is treated as deleted.
-//
-// OS Concept 1: WRITER or above required to set expiry
-// OS Concept 3: Mutex ensures the expiry_time is set atomically
 // =============================================================================
 void cmd_expire(ClientSession *session, ParsedCommand *cmd,
                 char *response_buf, size_t response_size) {
@@ -63,7 +55,7 @@ void cmd_expire(ClientSession *session, ParsedCommand *cmd,
         return;
     }
 
-    // ── CRITICAL SECTION START ────────────────────────────────────────────────
+    // CRITICAL SECTION START
     pthread_mutex_lock(&db_mutex);
 
     // First check if the key exists at all
@@ -78,7 +70,7 @@ void cmd_expire(ClientSession *session, ParsedCommand *cmd,
     ht_set_expiry(db, key, expiry_timestamp);
 
     pthread_mutex_unlock(&db_mutex);
-    // ── CRITICAL SECTION END ──────────────────────────────────────────────────
+    // CRITICAL SECTION END
 
     // Timeout successfully set
     snprintf(response_buf, response_size, "Success: Timeout set.\r\n");
@@ -107,7 +99,7 @@ void cmd_ttl(ClientSession *session, ParsedCommand *cmd,
 
     const char *key = cmd->args[1];
 
-    // ── CRITICAL SECTION START ────────────────────────────────────────────────
+    // CRITICAL SECTION START
     pthread_mutex_lock(&db_mutex);
 
     if (!ht_exists(db, key)) {
@@ -119,7 +111,7 @@ void cmd_ttl(ClientSession *session, ParsedCommand *cmd,
     time_t expiry = ht_get_expiry(db, key);
 
     pthread_mutex_unlock(&db_mutex);
-    // ── CRITICAL SECTION END ──────────────────────────────────────────────────
+    // CRITICAL SECTION END
 
     if (expiry == 0) {
         // Key exists but has no expiry — lives forever

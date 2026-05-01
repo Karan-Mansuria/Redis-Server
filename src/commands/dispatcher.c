@@ -1,20 +1,3 @@
-// =============================================================================
-// commands/dispatcher.c — Command parser and router
-// Location: mini-redis/commands/dispatcher.c
-// =============================================================================
-//
-// This file is the brain of the command system. It does three things:
-//   1. PARSE  — split raw text input into tokens (command + arguments)
-//   2. GUARD  — reject unauthenticated clients and wrong argument counts
-//   3. ROUTE  — call the correct handler function in keyval.c, strings.c, ttl.c
-//               or persistence.c
-//
-// Real Redis has a command table (an array of structs) where each entry
-// holds the command name, handler pointer, min/max arg count, and flags.
-// We use a simpler if-else chain here which is easier to read and debug,
-// while demonstrating the same architectural pattern.
-// =============================================================================
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -28,22 +11,13 @@
 #include "../persistence.h"
 #include "../globals.h"
 
-// -----------------------------------------------------------------------------
-// INTERNAL HELPER: to_uppercase
-// Converts a string to uppercase IN PLACE so commands are case-insensitive.
-// "set", "Set", "SET" all work the same way, matching real Redis behaviour.
-// -----------------------------------------------------------------------------
 static void to_uppercase(char *str) {
     for (int i = 0; str[i]; i++) {
         str[i] = (char)toupper((unsigned char)str[i]);
     }
 }
 
-// -----------------------------------------------------------------------------
-// INTERNAL HELPER: bad_args
-// Writes a standardised wrong-argument-count error into response_buf.
-// Usage: bad_args("SET", "SET key value", response_buf, response_size)
-// -----------------------------------------------------------------------------
+
 static void bad_args(const char *cmd_name,
                      const char *usage,
                      char       *response_buf,
@@ -55,13 +29,10 @@ static void bad_args(const char *cmd_name,
 
 // =============================================================================
 // parse_command
-//
 // Tokenizes raw_input by splitting on spaces and tabs.
 // Stores each token in cmd->args[][] and sets cmd->argc.
-//
-// strtok() is destructive (replaces delimiters with '\0'), so we work on
-// a local copy of raw_input. This keeps raw_input intact for logging.
 // =============================================================================
+
 int parse_command(const char *raw_input, ParsedCommand *cmd) {
     cmd->argc = 0;
 
@@ -83,13 +54,10 @@ int parse_command(const char *raw_input, ParsedCommand *cmd) {
 
 // =============================================================================
 // dispatch_command
-//
-// Called from client_handler() in server.c for every line the client sends.
-//
+// Called from client_handler() in server.c for every line the client sends
 // Flow:
 //   parse → uppercase → check AUTH gate → route to handler → return result
-//
-// Returns 0 normally, -1 if the client sent QUIT (signals caller to close conn).
+// Returns 0 normally, -1 if the client sent QUIT (signals caller to close conn)
 // =============================================================================
 int dispatch_command(ClientSession *session,
                      const char    *raw_input,
@@ -108,16 +76,12 @@ int dispatch_command(ClientSession *session,
     }
 
     // Uppercase the command name for case-insensitive matching.
-    // args[1], args[2] (keys and values) stay as-is — keys are case-sensitive.
     to_uppercase(cmd.args[0]);
 
     // =========================================================================
     // AUTH GATE
-    //
     // AUTH is the only command allowed before authentication.
     // Every other command checks session->authenticated first.
-    //
-    // OS Concept 1: Role-Based Authorization
     // =========================================================================
 
     // ── Handle AUTH separately — it's allowed before authentication ──────────
@@ -166,9 +130,9 @@ int dispatch_command(ClientSession *session,
     //   persistence.c → SAVE, BGSAVE (routed directly, no wrapper needed)
     //
     // Every handler receives:
-    //   session  — for permission checks (has_permission())
-    //   &cmd     — the parsed tokens
-    //   response_buf, response_size — where to write the response
+    //   session  - for permission checks (has_permission())
+    //   &cmd     - the parsed tokens
+    //   response_buf, response_size - where to write the response
     // =========================================================================
 
     // ── Tier 1: Core key-value commands (keyval.c) ───────────────────────────

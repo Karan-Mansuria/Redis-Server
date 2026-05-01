@@ -88,12 +88,12 @@ int authenticate(ClientSession *session, char *username, char *password) {
 }
 
 /*
-  Checks if the session's role is allowed to perform an operation.
-  ADMIN (0) can do everything.
-  WRITER (1) can do everything except ADMIN-only commands.
-  READER (2) can only do read operations.
+  Checks if the session's role is allowed to perform an operation
+  ADMIN (0) can do everything
+  WRITER (1) can do everything except ADMIN-only commands
+  READER (2) can only do read operations
  */
-int has_permission(ClientSession *session, Role required_role) {
+int has_permission(ClientSession *session, Role required_role ) {
     if (!session->authenticated) return 0;
     return session->role <= required_role;
 }

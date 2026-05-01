@@ -1,10 +1,3 @@
-/*
- * =============================================================================
- * keyval.h — Core key-value commands header
- * Location: mini-redis/commands/keyval.h
- * =============================================================================
- */
-
 #ifndef KEYVAL_H
 #define KEYVAL_H
 
