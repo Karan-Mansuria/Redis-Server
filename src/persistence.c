@@ -1,36 +1,10 @@
-// =============================================================================
-// persistence.c — Snapshot persistence: SAVE, BGSAVE, load_snapshot
-// Location: mini-redis/persistence.c
-// =============================================================================
-//
-// OS CONCEPTS DEMONSTRATED IN THIS FILE:
-//
 //   Concept 2 — File Locking:
 //     flock(LOCK_EX) is called before every write to dump.rdb.
 //     flock(LOCK_SH) is called before every read from dump.rdb.
-//     This prevents file corruption if two processes try to write simultaneously
-//     (e.g., a SAVE and BGSAVE child running at the same time).
-//
-//   Concept 6 — Inter-Process Communication (IPC):
-//     bgsave_async() calls fork() to create a child process.
-//     The child saves data and writes "DONE" into a pipe.
-//     The parent reads from the pipe in a detached watcher thread.
-//     The parent and child are separate processes communicating via the pipe.
-//
-// DUMP FILE FORMAT (dump.rdb — plain text for readability):
-//   # Mini-Redis snapshot — <timestamp>
-//   <key> <value> <expiry_time_t>
-//   ...
-//
-//   expiry_time = 0 means no expiry.
-//   Lines starting with '#' are comments and are skipped on load.
-//   Keys and values cannot contain spaces (project-scope limitation).
-//
 // WHY flock() INSTEAD OF POSIX LOCKS (fcntl)?
-//   flock() is simpler and sufficient for this project. It locks the whole file
+//   flock() is simpler. It locks the whole file
 //   (not byte ranges). It is released automatically if the process crashes,
 //   which is a useful safety property for this use case.
-// =============================================================================
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -39,7 +13,7 @@
 #include <fcntl.h>
 #include <time.h>
 #include <errno.h>
-#include <sys/file.h>   // flock()
+#include <sys/file.h>   
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <pthread.h>
@@ -48,19 +22,11 @@
 #include "hashtable.h"
 #include "globals.h"
 
-// =============================================================================
-// INTERNAL HELPER: write_entries_to_fd
-//
-// Iterates every bucket and every entry in the hash table, writing each
-// key-value-expiry line to the file descriptor fd.
-//
-// Called from both save_snapshot() and the child process in bgsave_async().
-//
-// Returns the number of keys written.
-//
-// NOTE: The caller is responsible for holding db_mutex before calling this.
-//       We do not lock inside here to avoid double-locking.
-// =============================================================================
+
+
+//The caller is responsible for holding db_mutex before calling this.
+//We do not lock inside here to avoid double-locking.
+
 static int write_entries_to_fd(HashTable *ht, int fd) {
     int count = 0;
     char line[4096];
@@ -114,22 +80,7 @@ static int write_entries_to_fd(HashTable *ht, int fd) {
     return count;
 }
 
-// =============================================================================
-// save_snapshot — Synchronous save with exclusive file lock
-//
-// Called by the SAVE command and during graceful shutdown.
-// Blocks the calling thread until the write completes.
-//
-// OS Concept 2: File Locking
-//   flock(fd, LOCK_EX) — acquires exclusive lock.
-//     If another process (e.g., a BGSAVE child) holds the lock, this call
-//     BLOCKS until that process releases it. This guarantees that only one
-//     writer touches dump.rdb at a time, preventing file corruption.
-//   flock(fd, LOCK_UN) — releases the lock explicitly.
-//     flock also releases automatically when fd is closed.
-//
-// Returns: number of keys saved, or -1 on error.
-// =============================================================================
+
 int save_snapshot(HashTable *ht, const char *filepath) {
     // O_WRONLY | O_CREAT | O_TRUNC:
     //   O_WRONLY — open for writing only
@@ -142,12 +93,6 @@ int save_snapshot(HashTable *ht, const char *filepath) {
         return -1;
     }
 
-    // ── ACQUIRE EXCLUSIVE FILE LOCK ───────────────────────────────────────────
-    // OS Concept 2: File Locking
-    //
-    // LOCK_EX = exclusive lock (only one holder at a time)
-    // This call BLOCKS if another process holds LOCK_EX or LOCK_SH on this file.
-    // It unblocks when they release the lock.
     if (flock(fd, LOCK_EX) != 0) {
         perror("[PERSISTENCE] flock(LOCK_EX) failed");
         close(fd);
@@ -180,21 +125,13 @@ int save_snapshot(HashTable *ht, const char *filepath) {
 //
 // Called once at server startup before the accept() loop begins.
 // No mutex is needed here because no client threads exist yet at startup.
-//
-// OS Concept 2: File Locking
-//   flock(fd, LOCK_SH) — shared read lock.
-//   Multiple readers can hold LOCK_SH simultaneously.
-//   LOCK_SH blocks if a writer holds LOCK_EX.
-//   This protects against a race where a BGSAVE child writes while we read.
-//
-// Returns: number of keys loaded, 0 if file not found, -1 on error.
 // =============================================================================
 int load_snapshot(HashTable *ht, const char *filepath) {
     // O_RDONLY — open for reading only
     int fd = open(filepath, O_RDONLY);
     if (fd < 0) {
         if (errno == ENOENT) {
-            // File does not exist — first run, not an error
+
             printf("[PERSISTENCE] No %s found — starting fresh\n", filepath);
             return 0;
         }
@@ -202,10 +139,9 @@ int load_snapshot(HashTable *ht, const char *filepath) {
         return -1;
     }
 
-    // ── ACQUIRE SHARED FILE LOCK ──────────────────────────────────────────────
-    // OS Concept 2: File Locking
-    //
-    // LOCK_SH = shared lock (multiple readers allowed simultaneously)
+    // ACQUIRE SHARED FILE LOCK 
+
+
     if (flock(fd, LOCK_SH) != 0) {
         perror("[PERSISTENCE] flock(LOCK_SH) failed");
         close(fd);
@@ -214,6 +150,7 @@ int load_snapshot(HashTable *ht, const char *filepath) {
 
     // Use fdopen to get a FILE* for convenient fgets() line reading
     // We already have the lock via fd — fdopen wraps the same fd
+
     FILE *f = fdopen(fd, "r");
     if (!f) {
         perror("[PERSISTENCE] fdopen() failed");
@@ -280,8 +217,6 @@ int load_snapshot(HashTable *ht, const char *filepath) {
 // If the parent blocked on pipe read directly in the main thread,
 // no new client commands could be processed during the save.
 // Running the watcher in its own pthread keeps the parent fully responsive.
-//
-// OS Concept 6: IPC — reading from the pipe that the child wrote to
 // =============================================================================
 typedef struct {
     int pipe_read_fd;  // The read end of the pipe from the BGSAVE child
@@ -290,7 +225,7 @@ typedef struct {
 static void *bgsave_watcher_thread(void *arg) {
     BgsaveWatcherArg *warg = (BgsaveWatcherArg *)arg;
     int pipe_read_fd = warg->pipe_read_fd;
-    free(warg);  // We own this heap allocation
+    free(warg);  
 
     // Block here until the child writes to the pipe
     char msg[16];
@@ -338,7 +273,7 @@ static void *bgsave_watcher_thread(void *arg) {
 // =============================================================================
 void bgsave_async(HashTable *ht, char *response_buf, size_t response_size) {
 
-    // Step 1: Create the pipe
+
     // pipe[0] = read end (parent reads from this)
     // pipe[1] = write end (child writes to this)
     int pipefd[2];
