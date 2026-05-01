@@ -1,0 +1,2332 @@
+[2026-05-01 20:30:16] [START] [server] ═══ Mini Redis Server starting ═══
+[2026-05-01 20:30:16] [INIT] [server] Signal handlers registered
+[2026-05-01 20:30:16] [INIT] [server] ACL users loaded from users.conf
+[2026-05-01 20:30:16] [INIT] [server] In-memory hash table created (256 buckets)
+[2026-05-01 20:30:16] [INIT] [server] Client semaphore initialized (max=100)
+[2026-05-01 20:30:16] [RESTORE] [server] No existing dump.rdb found — starting with empty database
+[2026-05-01 20:30:16] [INIT] [server] Background expiry thread started
+[2026-05-01 20:30:16] [READY] [server] Listening on port 6379 (fd=5)
+[2026-05-01 20:30:57] [ACCEPT] [server] Client accepted (fd=6) from 127.0.0.1:51620
+[2026-05-01 20:30:57] [CONNECT] [unknown] New connection from 127.0.0.1:51620 (fd=6)
+[2026-05-01 20:30:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:30:57] [CMD] [alice] CMD: SET msg Hello
+[2026-05-01 20:30:57] [CMD] [alice] CMD: APPEND msg _World
+[2026-05-01 20:30:57] [CMD] [alice] CMD: EXISTS msg
+[2026-05-01 20:30:57] [CMD] [alice] CMD: GET msg
+[2026-05-01 20:30:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:30:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:30:57] [THREAD] [alice] Thread for fd=6 cleaned up
+[2026-05-01 20:30:57] [ACCEPT] [server] Client accepted (fd=6) from 127.0.0.1:51621
+[2026-05-01 20:30:57] [CONNECT] [unknown] New connection from 127.0.0.1:51621 (fd=6)
+[2026-05-01 20:30:57] [CMD] [unauthenticated] CMD: AUTH bob reader123
+[2026-05-01 20:30:57] [CMD] [bob] CMD: SET hack 123
+[2026-05-01 20:30:57] [CMD] [bob] CMD: QUIT
+[2026-05-01 20:30:57] [QUIT] [bob] Client issued QUIT
+[2026-05-01 20:30:57] [THREAD] [bob] Thread for fd=6 cleaned up
+[2026-05-01 20:30:58] [ACCEPT] [server] Client accepted (fd=6) from 127.0.0.1:51622
+[2026-05-01 20:30:58] [CONNECT] [unknown] New connection from 127.0.0.1:51622 (fd=6)
+[2026-05-01 20:30:58] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:30:58] [CMD] [alice] CMD: DEL msg
+[2026-05-01 20:30:58] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:30:58] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:30:58] [THREAD] [alice] Thread for fd=6 cleaned up
+[2026-05-01 20:30:58] [ACCEPT] [server] Client accepted (fd=6) from 127.0.0.1:51623
+[2026-05-01 20:30:58] [CONNECT] [unknown] New connection from 127.0.0.1:51623 (fd=6)
+[2026-05-01 20:30:58] [CMD] [unauthenticated] CMD: AUTH admin admin123
+[2026-05-01 20:30:58] [CMD] [admin] CMD: DEL msg
+[2026-05-01 20:30:58] [CMD] [admin] CMD: QUIT
+[2026-05-01 20:30:58] [QUIT] [admin] Client issued QUIT
+[2026-05-01 20:30:58] [THREAD] [admin] Thread for fd=6 cleaned up
+[2026-05-01 20:30:58] [ACCEPT] [server] Client accepted (fd=6) from 127.0.0.1:51624
+[2026-05-01 20:30:58] [CONNECT] [unknown] New connection from 127.0.0.1:51624 (fd=6)
+[2026-05-01 20:30:58] [CMD] [unauthenticated] CMD: AUTH admin admin123
+[2026-05-01 20:30:58] [CMD] [admin] CMD: SET bomb ticktock
+[2026-05-01 20:30:58] [CMD] [admin] CMD: EXPIRE bomb 2
+[2026-05-01 20:30:58] [CMD] [admin] CMD: TTL bomb
+[2026-05-01 20:30:59] [CMD] [admin] CMD: QUIT
+[2026-05-01 20:30:59] [QUIT] [admin] Client issued QUIT
+[2026-05-01 20:30:59] [THREAD] [admin] Thread for fd=6 cleaned up
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=6) from 127.0.0.1:51627
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51627 (fd=6)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH admin admin123
+[2026-05-01 20:31:02] [CMD] [admin] CMD: GET bomb
+[2026-05-01 20:31:02] [CMD] [admin] CMD: QUIT
+[2026-05-01 20:31:02] [QUIT] [admin] Client issued QUIT
+[2026-05-01 20:31:02] [THREAD] [admin] Thread for fd=6 cleaned up
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=6) from 127.0.0.1:51628
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51628 (fd=6)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH admin admin123
+[2026-05-01 20:31:02] [CMD] [admin] CMD: SET stress_counter 0
+[2026-05-01 20:31:02] [CMD] [admin] CMD: QUIT
+[2026-05-01 20:31:02] [QUIT] [admin] Client issued QUIT
+[2026-05-01 20:31:02] [THREAD] [admin] Thread for fd=6 cleaned up
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=6) from 127.0.0.1:51631
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51631 (fd=6)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=7) from 127.0.0.1:51632
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51632 (fd=7)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=8) from 127.0.0.1:51634
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51634 (fd=8)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51633 (fd=9)
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=9) from 127.0.0.1:51633
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51635 (fd=10)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=10) from 127.0.0.1:51635
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=11) from 127.0.0.1:51636
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51636 (fd=11)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=12) from 127.0.0.1:51637
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51637 (fd=12)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=13) from 127.0.0.1:51638
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51638 (fd=13)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=14) from 127.0.0.1:51639
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51639 (fd=14)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=15) from 127.0.0.1:51640
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51640 (fd=15)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=16) from 127.0.0.1:51641
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51641 (fd=16)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=17) from 127.0.0.1:51642
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=18) from 127.0.0.1:51643
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51642 (fd=17)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51643 (fd=18)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=19) from 127.0.0.1:51644
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=20) from 127.0.0.1:51645
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51644 (fd=19)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51645 (fd=20)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=21) from 127.0.0.1:51646
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51646 (fd=21)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=22) from 127.0.0.1:51647
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51647 (fd=22)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=23) from 127.0.0.1:51648
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51648 (fd=23)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=24) from 127.0.0.1:51649
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51649 (fd=24)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=25) from 127.0.0.1:51650
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=26) from 127.0.0.1:51651
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51650 (fd=25)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51651 (fd=26)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=27) from 127.0.0.1:51652
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51652 (fd=27)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=28) from 127.0.0.1:51653
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51653 (fd=28)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=29) from 127.0.0.1:51654
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51654 (fd=29)
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=30) from 127.0.0.1:51656
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=31) from 127.0.0.1:51655
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=32) from 127.0.0.1:51657
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51657 (fd=32)
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51656 (fd=30)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51655 (fd=31)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=33) from 127.0.0.1:51658
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=34) from 127.0.0.1:51659
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51658 (fd=33)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51659 (fd=34)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=35) from 127.0.0.1:51660
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=36) from 127.0.0.1:51661
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51662 (fd=37)
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51660 (fd=35)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51661 (fd=36)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=37) from 127.0.0.1:51662
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=38) from 127.0.0.1:51663
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51663 (fd=38)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=39) from 127.0.0.1:51664
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51664 (fd=39)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=40) from 127.0.0.1:51665
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=41) from 127.0.0.1:51666
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51665 (fd=40)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51666 (fd=41)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=42) from 127.0.0.1:51667
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=43) from 127.0.0.1:51668
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51667 (fd=42)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51668 (fd=43)
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=44) from 127.0.0.1:51669
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51669 (fd=44)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=45) from 127.0.0.1:51670
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51670 (fd=45)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=46) from 127.0.0.1:51671
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51671 (fd=46)
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=47) from 127.0.0.1:51672
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51672 (fd=47)
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=48) from 127.0.0.1:51673
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51673 (fd=48)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=49) from 127.0.0.1:51674
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51674 (fd=49)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=50) from 127.0.0.1:51675
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51675 (fd=50)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=51) from 127.0.0.1:51676
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51676 (fd=51)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=52) from 127.0.0.1:51677
+[2026-05-01 20:31:02] [CONNECT] [unknown] New connection from 127.0.0.1:51677 (fd=52)
+[2026-05-01 20:31:02] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:02] [ACCEPT] [server] Client accepted (fd=53) from 127.0.0.1:51678
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51678 (fd=53)
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=54) from 127.0.0.1:51679
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51679 (fd=54)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=55) from 127.0.0.1:51680
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51680 (fd=55)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=56) from 127.0.0.1:51681
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=57) from 127.0.0.1:51682
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51681 (fd=56)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51682 (fd=57)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=58) from 127.0.0.1:51683
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51683 (fd=58)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=59) from 127.0.0.1:51684
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51684 (fd=59)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=60) from 127.0.0.1:51685
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51685 (fd=60)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=61) from 127.0.0.1:51686
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51686 (fd=61)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=62) from 127.0.0.1:51687
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=63) from 127.0.0.1:51688
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51687 (fd=62)
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51688 (fd=63)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51689 (fd=64)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=64) from 127.0.0.1:51689
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=65) from 127.0.0.1:51690
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51690 (fd=65)
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=66) from 127.0.0.1:51691
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51691 (fd=66)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=67) from 127.0.0.1:51692
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51692 (fd=67)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=68) from 127.0.0.1:51693
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=69) from 127.0.0.1:51694
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51694 (fd=69)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51693 (fd=68)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=70) from 127.0.0.1:51695
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=71) from 127.0.0.1:51696
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51695 (fd=70)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51696 (fd=71)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=72) from 127.0.0.1:51697
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51697 (fd=72)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=73) from 127.0.0.1:51698
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51698 (fd=73)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=74) from 127.0.0.1:51699
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=75) from 127.0.0.1:51700
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51699 (fd=74)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51700 (fd=75)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51701 (fd=76)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=76) from 127.0.0.1:51701
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=77) from 127.0.0.1:51702
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51702 (fd=77)
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=78) from 127.0.0.1:51703
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=79) from 127.0.0.1:51704
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51703 (fd=78)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51704 (fd=79)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=80) from 127.0.0.1:51705
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51705 (fd=80)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=9 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=7 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=7) from 127.0.0.1:51706
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=9) from 127.0.0.1:51707
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=6 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=11 cleaned up
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51706 (fd=7)
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=6) from 127.0.0.1:51708
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51707 (fd=9)
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51708 (fd=6)
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=13 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=10 cleaned up
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=16 cleaned up
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=17 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=8 cleaned up
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=10) from 127.0.0.1:51709
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51709 (fd=10)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=12 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=18 cleaned up
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=21 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=19 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=15 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=20 cleaned up
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=8) from 127.0.0.1:51710
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=14 cleaned up
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51710 (fd=8)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=11) from 127.0.0.1:51711
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51711 (fd=11)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=25 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=22 cleaned up
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=12) from 127.0.0.1:51712
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51712 (fd=12)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=31 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=29 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=40 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=32 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=23 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=41 cleaned up
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=30 cleaned up
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=38 cleaned up
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=24 cleaned up
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=36 cleaned up
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=44 cleaned up
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=43 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=13) from 127.0.0.1:51713
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51713 (fd=13)
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=48 cleaned up
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=35 cleaned up
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=47 cleaned up
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=56 cleaned up
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=46 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=71 cleaned up
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=28 cleaned up
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=50 cleaned up
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=58 cleaned up
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=39 cleaned up
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=63 cleaned up
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=54 cleaned up
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=53 cleaned up
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=55 cleaned up
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=34 cleaned up
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=37 cleaned up
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=65 cleaned up
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=79 cleaned up
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=14) from 127.0.0.1:51714
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=59 cleaned up
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=15) from 127.0.0.1:51715
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51714 (fd=14)
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=52 cleaned up
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=61 cleaned up
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51715 (fd=15)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=49 cleaned up
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=26 cleaned up
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=16) from 127.0.0.1:51716
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51716 (fd=16)
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=64 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=77 cleaned up
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=67 cleaned up
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=57 cleaned up
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=45 cleaned up
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=62 cleaned up
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=27 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=17) from 127.0.0.1:51717
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=18) from 127.0.0.1:51718
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=60 cleaned up
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=66 cleaned up
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=19) from 127.0.0.1:51719
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51719 (fd=19)
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=9 cleaned up
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=42 cleaned up
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=75 cleaned up
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=69 cleaned up
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51717 (fd=17)
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=33 cleaned up
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51718 (fd=18)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=80 cleaned up
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=51 cleaned up
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=73 cleaned up
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51720 (fd=9)
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=10 cleaned up
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=9) from 127.0.0.1:51720
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=10) from 127.0.0.1:51721
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51721 (fd=10)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=76 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=74 cleaned up
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=20) from 127.0.0.1:51722
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51722 (fd=20)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=21) from 127.0.0.1:51723
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51723 (fd=21)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=78 cleaned up
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=22) from 127.0.0.1:51724
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=23) from 127.0.0.1:51725
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=24) from 127.0.0.1:51726
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=25) from 127.0.0.1:51727
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=26) from 127.0.0.1:51728
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51725 (fd=23)
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51726 (fd=24)
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51724 (fd=22)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51727 (fd=25)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51728 (fd=26)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=11 cleaned up
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=68 cleaned up
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=11) from 127.0.0.1:51729
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51729 (fd=11)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=27) from 127.0.0.1:51730
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51730 (fd=27)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=72 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=7 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=70 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=6 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=8 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=15 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=12 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=17 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=13 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=14 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=16 cleaned up
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=18 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=9 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=19 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=10 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=20 cleaned up
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=21 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=26 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=25 cleaned up
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=24 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=23 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=22 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=27 cleaned up
+[2026-05-01 20:31:03] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [alice] Thread for fd=11 cleaned up
+[2026-05-01 20:31:03] [ACCEPT] [server] Client accepted (fd=6) from 127.0.0.1:51731
+[2026-05-01 20:31:03] [CONNECT] [unknown] New connection from 127.0.0.1:51731 (fd=6)
+[2026-05-01 20:31:03] [CMD] [unauthenticated] CMD: AUTH admin admin123
+[2026-05-01 20:31:03] [CMD] [admin] CMD: GET stress_counter
+[2026-05-01 20:31:03] [CMD] [admin] CMD: QUIT
+[2026-05-01 20:31:03] [QUIT] [admin] Client issued QUIT
+[2026-05-01 20:31:03] [THREAD] [admin] Thread for fd=6 cleaned up
+[2026-05-01 20:31:04] [ACCEPT] [server] Client accepted (fd=6) from 127.0.0.1:51732
+[2026-05-01 20:31:04] [CONNECT] [unknown] New connection from 127.0.0.1:51732 (fd=6)
+[2026-05-01 20:31:04] [CMD] [unauthenticated] CMD: AUTH admin admin123
+[2026-05-01 20:31:04] [CMD] [admin] CMD: BGSAVE
+[2026-05-01 20:31:04] [CMD] [admin] CMD: SAVE
+[2026-05-01 20:31:04] [CMD] [admin] CMD: QUIT
+[2026-05-01 20:31:04] [QUIT] [admin] Client issued QUIT
+[2026-05-01 20:31:04] [THREAD] [admin] Thread for fd=6 cleaned up
+[2026-05-01 20:31:39] [ACCEPT] [server] Client accepted (fd=6) from 127.0.0.1:51768
+[2026-05-01 20:31:39] [CONNECT] [unknown] New connection from 127.0.0.1:51768 (fd=6)
+[2026-05-01 20:31:39] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:39] [CMD] [alice] CMD: SET msg Hello
+[2026-05-01 20:31:39] [CMD] [alice] CMD: APPEND msg _World
+[2026-05-01 20:31:39] [CMD] [alice] CMD: EXISTS msg
+[2026-05-01 20:31:39] [CMD] [alice] CMD: GET msg
+[2026-05-01 20:31:39] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:39] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:39] [THREAD] [alice] Thread for fd=6 cleaned up
+[2026-05-01 20:31:39] [ACCEPT] [server] Client accepted (fd=6) from 127.0.0.1:51769
+[2026-05-01 20:31:39] [CONNECT] [unknown] New connection from 127.0.0.1:51769 (fd=6)
+[2026-05-01 20:31:39] [CMD] [unauthenticated] CMD: AUTH bob reader123
+[2026-05-01 20:31:39] [CMD] [bob] CMD: SET hack 123
+[2026-05-01 20:31:40] [CMD] [bob] CMD: QUIT
+[2026-05-01 20:31:40] [QUIT] [bob] Client issued QUIT
+[2026-05-01 20:31:40] [THREAD] [bob] Thread for fd=6 cleaned up
+[2026-05-01 20:31:40] [ACCEPT] [server] Client accepted (fd=6) from 127.0.0.1:51770
+[2026-05-01 20:31:40] [CONNECT] [unknown] New connection from 127.0.0.1:51770 (fd=6)
+[2026-05-01 20:31:40] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:40] [CMD] [alice] CMD: DEL msg
+[2026-05-01 20:31:40] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:40] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:40] [THREAD] [alice] Thread for fd=6 cleaned up
+[2026-05-01 20:31:40] [ACCEPT] [server] Client accepted (fd=6) from 127.0.0.1:51771
+[2026-05-01 20:31:40] [CONNECT] [unknown] New connection from 127.0.0.1:51771 (fd=6)
+[2026-05-01 20:31:40] [CMD] [unauthenticated] CMD: AUTH admin admin123
+[2026-05-01 20:31:40] [CMD] [admin] CMD: DEL msg
+[2026-05-01 20:31:40] [CMD] [admin] CMD: QUIT
+[2026-05-01 20:31:40] [QUIT] [admin] Client issued QUIT
+[2026-05-01 20:31:40] [THREAD] [admin] Thread for fd=6 cleaned up
+[2026-05-01 20:31:40] [ACCEPT] [server] Client accepted (fd=6) from 127.0.0.1:51772
+[2026-05-01 20:31:40] [CONNECT] [unknown] New connection from 127.0.0.1:51772 (fd=6)
+[2026-05-01 20:31:40] [CMD] [unauthenticated] CMD: AUTH admin admin123
+[2026-05-01 20:31:40] [CMD] [admin] CMD: SET bomb ticktock
+[2026-05-01 20:31:41] [CMD] [admin] CMD: EXPIRE bomb 2
+[2026-05-01 20:31:41] [CMD] [admin] CMD: TTL bomb
+[2026-05-01 20:31:41] [CMD] [admin] CMD: QUIT
+[2026-05-01 20:31:41] [QUIT] [admin] Client issued QUIT
+[2026-05-01 20:31:41] [THREAD] [admin] Thread for fd=6 cleaned up
+[2026-05-01 20:31:44] [ACCEPT] [server] Client accepted (fd=6) from 127.0.0.1:51775
+[2026-05-01 20:31:44] [CONNECT] [unknown] New connection from 127.0.0.1:51775 (fd=6)
+[2026-05-01 20:31:44] [CMD] [unauthenticated] CMD: AUTH admin admin123
+[2026-05-01 20:31:44] [CMD] [admin] CMD: GET bomb
+[2026-05-01 20:31:44] [CMD] [admin] CMD: QUIT
+[2026-05-01 20:31:44] [QUIT] [admin] Client issued QUIT
+[2026-05-01 20:31:44] [THREAD] [admin] Thread for fd=6 cleaned up
+[2026-05-01 20:31:44] [ACCEPT] [server] Client accepted (fd=6) from 127.0.0.1:51776
+[2026-05-01 20:31:44] [CONNECT] [unknown] New connection from 127.0.0.1:51776 (fd=6)
+[2026-05-01 20:31:44] [CMD] [unauthenticated] CMD: AUTH admin admin123
+[2026-05-01 20:31:44] [CMD] [admin] CMD: SET stress_counter 0
+[2026-05-01 20:31:44] [CMD] [admin] CMD: QUIT
+[2026-05-01 20:31:44] [QUIT] [admin] Client issued QUIT
+[2026-05-01 20:31:44] [THREAD] [admin] Thread for fd=6 cleaned up
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=6) from 127.0.0.1:51779
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=7) from 127.0.0.1:51780
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=8) from 127.0.0.1:51781
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51781 (fd=8)
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51779 (fd=6)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51780 (fd=7)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=9) from 127.0.0.1:51782
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51782 (fd=9)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51783 (fd=10)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=10) from 127.0.0.1:51783
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=11) from 127.0.0.1:51784
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51784 (fd=11)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=12) from 127.0.0.1:51785
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51785 (fd=12)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=13) from 127.0.0.1:51786
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51786 (fd=13)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=14) from 127.0.0.1:51787
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51787 (fd=14)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=15) from 127.0.0.1:51788
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51788 (fd=15)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=16) from 127.0.0.1:51789
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51789 (fd=16)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=17) from 127.0.0.1:51790
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51790 (fd=17)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=18) from 127.0.0.1:51791
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51791 (fd=18)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=19) from 127.0.0.1:51792
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=20) from 127.0.0.1:51793
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51793 (fd=20)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51792 (fd=19)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=21) from 127.0.0.1:51794
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51794 (fd=21)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=22) from 127.0.0.1:51795
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=23) from 127.0.0.1:51796
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51795 (fd=22)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51796 (fd=23)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=24) from 127.0.0.1:51797
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51797 (fd=24)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=25) from 127.0.0.1:51798
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=26) from 127.0.0.1:51799
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=27) from 127.0.0.1:51800
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=28) from 127.0.0.1:51801
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51798 (fd=25)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51799 (fd=26)
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51800 (fd=27)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51801 (fd=28)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=29) from 127.0.0.1:51802
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51802 (fd=29)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=30) from 127.0.0.1:51803
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51803 (fd=30)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=31) from 127.0.0.1:51804
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51804 (fd=31)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=32) from 127.0.0.1:51805
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51805 (fd=32)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=33) from 127.0.0.1:51806
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51806 (fd=33)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=34) from 127.0.0.1:51807
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=35) from 127.0.0.1:51808
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51807 (fd=34)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51808 (fd=35)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=36) from 127.0.0.1:51809
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51809 (fd=36)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=37) from 127.0.0.1:51810
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=38) from 127.0.0.1:51811
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51810 (fd=37)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51811 (fd=38)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=39) from 127.0.0.1:51812
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=40) from 127.0.0.1:51813
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51812 (fd=39)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51813 (fd=40)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=41) from 127.0.0.1:51814
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51814 (fd=41)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=42) from 127.0.0.1:51815
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=43) from 127.0.0.1:51816
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51815 (fd=42)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51816 (fd=43)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=44) from 127.0.0.1:51817
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51817 (fd=44)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=45) from 127.0.0.1:51818
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=46) from 127.0.0.1:51819
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51819 (fd=46)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51818 (fd=45)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=47) from 127.0.0.1:51820
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51820 (fd=47)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=48) from 127.0.0.1:51821
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51821 (fd=48)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=49) from 127.0.0.1:51822
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51822 (fd=49)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=50) from 127.0.0.1:51823
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=51) from 127.0.0.1:51824
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51823 (fd=50)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51824 (fd=51)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=52) from 127.0.0.1:51825
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51825 (fd=52)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=53) from 127.0.0.1:51826
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51826 (fd=53)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=54) from 127.0.0.1:51827
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51827 (fd=54)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=55) from 127.0.0.1:51828
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51828 (fd=55)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=56) from 127.0.0.1:51829
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51829 (fd=56)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=57) from 127.0.0.1:51830
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51830 (fd=57)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=58) from 127.0.0.1:51831
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=59) from 127.0.0.1:51832
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51831 (fd=58)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51832 (fd=59)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=60) from 127.0.0.1:51833
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=61) from 127.0.0.1:51834
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51833 (fd=60)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51834 (fd=61)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=62) from 127.0.0.1:51835
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51835 (fd=62)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=63) from 127.0.0.1:51836
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51836 (fd=63)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=64) from 127.0.0.1:51837
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51837 (fd=64)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=65) from 127.0.0.1:51838
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51838 (fd=65)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51839 (fd=66)
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=66) from 127.0.0.1:51839
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=67) from 127.0.0.1:51840
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51840 (fd=67)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=68) from 127.0.0.1:51841
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=69) from 127.0.0.1:51842
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51841 (fd=68)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51842 (fd=69)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=70) from 127.0.0.1:51843
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51843 (fd=70)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=71) from 127.0.0.1:51844
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51844 (fd=71)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=72) from 127.0.0.1:51845
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=73) from 127.0.0.1:51846
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=74) from 127.0.0.1:51847
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51845 (fd=72)
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51846 (fd=73)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51847 (fd=74)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=75) from 127.0.0.1:51848
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51848 (fd=75)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=76) from 127.0.0.1:51849
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51849 (fd=76)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=77) from 127.0.0.1:51850
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51850 (fd=77)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=78) from 127.0.0.1:51851
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51851 (fd=78)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=79) from 127.0.0.1:51852
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51852 (fd=79)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=80) from 127.0.0.1:51853
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51853 (fd=80)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=81) from 127.0.0.1:51854
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51854 (fd=81)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=82) from 127.0.0.1:51855
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51855 (fd=82)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=83) from 127.0.0.1:51856
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51856 (fd=83)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=84) from 127.0.0.1:51857
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51857 (fd=84)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=85) from 127.0.0.1:51858
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51858 (fd=85)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=86) from 127.0.0.1:51859
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=87) from 127.0.0.1:51860
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51860 (fd=87)
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51859 (fd=86)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=88) from 127.0.0.1:51861
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51861 (fd=88)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=89) from 127.0.0.1:51862
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51862 (fd=89)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=90) from 127.0.0.1:51863
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51863 (fd=90)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=91) from 127.0.0.1:51864
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51864 (fd=91)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=9 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=6 cleaned up
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=6) from 127.0.0.1:51865
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=8 cleaned up
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51865 (fd=6)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=10 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=7 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=12 cleaned up
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=14 cleaned up
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=13 cleaned up
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=11 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=7) from 127.0.0.1:51866
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=16 cleaned up
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51866 (fd=7)
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=15 cleaned up
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51867 (fd=8)
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=8) from 127.0.0.1:51867
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=17 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=18 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=20 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=22 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=19 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=24 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=25 cleaned up
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=23 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=21 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=28 cleaned up
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=9) from 127.0.0.1:51868
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51868 (fd=9)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=29 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=26 cleaned up
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=10) from 127.0.0.1:51869
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=11) from 127.0.0.1:51870
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=12) from 127.0.0.1:51871
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51871 (fd=12)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51869 (fd=10)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51870 (fd=11)
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=30 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=27 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=31 cleaned up
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=13) from 127.0.0.1:51872
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=33 cleaned up
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51872 (fd=13)
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=32 cleaned up
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=14) from 127.0.0.1:51873
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51873 (fd=14)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=36 cleaned up
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=38 cleaned up
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51874 (fd=15)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=15) from 127.0.0.1:51874
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=41 cleaned up
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=16) from 127.0.0.1:51875
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=42 cleaned up
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51875 (fd=16)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=35 cleaned up
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=37 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=17) from 127.0.0.1:51876
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51876 (fd=17)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=40 cleaned up
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=18) from 127.0.0.1:51877
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51877 (fd=18)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=44 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=47 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=43 cleaned up
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=46 cleaned up
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51878 (fd=19)
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=19) from 127.0.0.1:51878
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=48 cleaned up
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=49 cleaned up
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=39 cleaned up
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=34 cleaned up
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=45 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=50 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=51 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=53 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=52 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=54 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=56 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=55 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=57 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=58 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=60 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=59 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=61 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=62 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=64 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=63 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=65 cleaned up
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=67 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=66 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=69 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=68 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=75 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=72 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=71 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=70 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=76 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=74 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=77 cleaned up
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=79 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=73 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=82 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=78 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=81 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=80 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=85 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=83 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=87 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=86 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=88 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=84 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=89 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=90 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=91 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=6 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=7 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=8 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=9 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=12 cleaned up
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=10 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=13 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=11 cleaned up
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=14 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=16 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=15 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=17 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=19 cleaned up
+[2026-05-01 20:31:45] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [alice] Thread for fd=18 cleaned up
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=6) from 127.0.0.1:51879
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51879 (fd=6)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH admin admin123
+[2026-05-01 20:31:45] [CMD] [admin] CMD: GET stress_counter
+[2026-05-01 20:31:45] [CMD] [admin] CMD: QUIT
+[2026-05-01 20:31:45] [QUIT] [admin] Client issued QUIT
+[2026-05-01 20:31:45] [THREAD] [admin] Thread for fd=6 cleaned up
+[2026-05-01 20:31:45] [ACCEPT] [server] Client accepted (fd=6) from 127.0.0.1:51880
+[2026-05-01 20:31:45] [CONNECT] [unknown] New connection from 127.0.0.1:51880 (fd=6)
+[2026-05-01 20:31:45] [CMD] [unauthenticated] CMD: AUTH admin admin123
+[2026-05-01 20:31:46] [CMD] [admin] CMD: BGSAVE
+[2026-05-01 20:31:46] [CMD] [admin] CMD: SAVE
+[2026-05-01 20:31:46] [CMD] [admin] CMD: QUIT
+[2026-05-01 20:31:46] [QUIT] [admin] Client issued QUIT
+[2026-05-01 20:31:46] [THREAD] [admin] Thread for fd=6 cleaned up
+[2026-05-01 20:31:51] [ACCEPT] [server] Client accepted (fd=6) from 127.0.0.1:51885
+[2026-05-01 20:31:51] [CONNECT] [unknown] New connection from 127.0.0.1:51885 (fd=6)
+[2026-05-01 20:31:51] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:51] [CMD] [alice] CMD: SET msg Hello
+[2026-05-01 20:31:51] [CMD] [alice] CMD: APPEND msg _World
+[2026-05-01 20:31:51] [CMD] [alice] CMD: EXISTS msg
+[2026-05-01 20:31:51] [CMD] [alice] CMD: GET msg
+[2026-05-01 20:31:52] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:52] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:52] [THREAD] [alice] Thread for fd=6 cleaned up
+[2026-05-01 20:31:52] [ACCEPT] [server] Client accepted (fd=6) from 127.0.0.1:51886
+[2026-05-01 20:31:52] [CONNECT] [unknown] New connection from 127.0.0.1:51886 (fd=6)
+[2026-05-01 20:31:52] [CMD] [unauthenticated] CMD: AUTH bob reader123
+[2026-05-01 20:31:52] [CMD] [bob] CMD: SET hack 123
+[2026-05-01 20:31:52] [CMD] [bob] CMD: QUIT
+[2026-05-01 20:31:52] [QUIT] [bob] Client issued QUIT
+[2026-05-01 20:31:52] [THREAD] [bob] Thread for fd=6 cleaned up
+[2026-05-01 20:31:52] [ACCEPT] [server] Client accepted (fd=6) from 127.0.0.1:51887
+[2026-05-01 20:31:52] [CONNECT] [unknown] New connection from 127.0.0.1:51887 (fd=6)
+[2026-05-01 20:31:52] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:52] [CMD] [alice] CMD: DEL msg
+[2026-05-01 20:31:52] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:52] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:52] [THREAD] [alice] Thread for fd=6 cleaned up
+[2026-05-01 20:31:52] [ACCEPT] [server] Client accepted (fd=6) from 127.0.0.1:51888
+[2026-05-01 20:31:52] [CONNECT] [unknown] New connection from 127.0.0.1:51888 (fd=6)
+[2026-05-01 20:31:52] [CMD] [unauthenticated] CMD: AUTH admin admin123
+[2026-05-01 20:31:52] [CMD] [admin] CMD: DEL msg
+[2026-05-01 20:31:53] [CMD] [admin] CMD: QUIT
+[2026-05-01 20:31:53] [QUIT] [admin] Client issued QUIT
+[2026-05-01 20:31:53] [THREAD] [admin] Thread for fd=6 cleaned up
+[2026-05-01 20:31:53] [ACCEPT] [server] Client accepted (fd=6) from 127.0.0.1:51889
+[2026-05-01 20:31:53] [CONNECT] [unknown] New connection from 127.0.0.1:51889 (fd=6)
+[2026-05-01 20:31:53] [CMD] [unauthenticated] CMD: AUTH admin admin123
+[2026-05-01 20:31:53] [CMD] [admin] CMD: SET bomb ticktock
+[2026-05-01 20:31:53] [CMD] [admin] CMD: EXPIRE bomb 2
+[2026-05-01 20:31:53] [CMD] [admin] CMD: TTL bomb
+[2026-05-01 20:31:53] [CMD] [admin] CMD: QUIT
+[2026-05-01 20:31:53] [QUIT] [admin] Client issued QUIT
+[2026-05-01 20:31:53] [THREAD] [admin] Thread for fd=6 cleaned up
+[2026-05-01 20:31:56] [ACCEPT] [server] Client accepted (fd=6) from 127.0.0.1:51894
+[2026-05-01 20:31:56] [CONNECT] [unknown] New connection from 127.0.0.1:51894 (fd=6)
+[2026-05-01 20:31:56] [CMD] [unauthenticated] CMD: AUTH admin admin123
+[2026-05-01 20:31:56] [CMD] [admin] CMD: GET bomb
+[2026-05-01 20:31:56] [CMD] [admin] CMD: QUIT
+[2026-05-01 20:31:56] [QUIT] [admin] Client issued QUIT
+[2026-05-01 20:31:56] [THREAD] [admin] Thread for fd=6 cleaned up
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=6) from 127.0.0.1:51897
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51897 (fd=6)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH admin admin123
+[2026-05-01 20:31:57] [CMD] [admin] CMD: SET stress_counter 0
+[2026-05-01 20:31:57] [CMD] [admin] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [admin] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [admin] Thread for fd=6 cleaned up
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=6) from 127.0.0.1:51898
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51898 (fd=6)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=7) from 127.0.0.1:51899
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51899 (fd=7)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=8) from 127.0.0.1:51900
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=9) from 127.0.0.1:51901
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=10) from 127.0.0.1:51902
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51900 (fd=8)
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51902 (fd=10)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51901 (fd=9)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=11) from 127.0.0.1:51903
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51903 (fd=11)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=12) from 127.0.0.1:51904
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51904 (fd=12)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=13) from 127.0.0.1:51905
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=14) from 127.0.0.1:51906
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=15) from 127.0.0.1:51907
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51907 (fd=15)
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51905 (fd=13)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51906 (fd=14)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=16) from 127.0.0.1:51908
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51908 (fd=16)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=17) from 127.0.0.1:51909
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51909 (fd=17)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=18) from 127.0.0.1:51910
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51910 (fd=18)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=19) from 127.0.0.1:51911
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51911 (fd=19)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=20) from 127.0.0.1:51912
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51912 (fd=20)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=21) from 127.0.0.1:51913
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51913 (fd=21)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=22) from 127.0.0.1:51914
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51914 (fd=22)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=23) from 127.0.0.1:51915
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51915 (fd=23)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=24) from 127.0.0.1:51916
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51916 (fd=24)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=25) from 127.0.0.1:51917
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51917 (fd=25)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=26) from 127.0.0.1:51918
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=27) from 127.0.0.1:51919
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51918 (fd=26)
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51919 (fd=27)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=28) from 127.0.0.1:51921
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=29) from 127.0.0.1:51920
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51921 (fd=28)
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51920 (fd=29)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=30) from 127.0.0.1:51922
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=31) from 127.0.0.1:51923
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51922 (fd=30)
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51923 (fd=31)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=32) from 127.0.0.1:51924
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=33) from 127.0.0.1:51925
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51924 (fd=32)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51925 (fd=33)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=34) from 127.0.0.1:51926
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51926 (fd=34)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=35) from 127.0.0.1:51927
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51927 (fd=35)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=36) from 127.0.0.1:51928
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51928 (fd=36)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=37) from 127.0.0.1:51929
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51929 (fd=37)
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=38) from 127.0.0.1:51930
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51930 (fd=38)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=39) from 127.0.0.1:51931
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51931 (fd=39)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=40) from 127.0.0.1:51932
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=41) from 127.0.0.1:51933
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51932 (fd=40)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51933 (fd=41)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=42) from 127.0.0.1:51934
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51934 (fd=42)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=43) from 127.0.0.1:51935
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51935 (fd=43)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=44) from 127.0.0.1:51936
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51936 (fd=44)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=45) from 127.0.0.1:51937
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51937 (fd=45)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=46) from 127.0.0.1:51938
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51938 (fd=46)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=47) from 127.0.0.1:51939
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51939 (fd=47)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=48) from 127.0.0.1:51940
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=49) from 127.0.0.1:51941
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51940 (fd=48)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51941 (fd=49)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=50) from 127.0.0.1:51942
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51942 (fd=50)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=51) from 127.0.0.1:51943
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=52) from 127.0.0.1:51944
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51943 (fd=51)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51944 (fd=52)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=53) from 127.0.0.1:51945
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51945 (fd=53)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=54) from 127.0.0.1:51946
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=55) from 127.0.0.1:51947
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=56) from 127.0.0.1:51948
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51946 (fd=54)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51947 (fd=55)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51948 (fd=56)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51949 (fd=57)
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=57) from 127.0.0.1:51949
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=58) from 127.0.0.1:51950
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51950 (fd=58)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=59) from 127.0.0.1:51951
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51951 (fd=59)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=60) from 127.0.0.1:51952
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51952 (fd=60)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=61) from 127.0.0.1:51953
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=62) from 127.0.0.1:51954
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51954 (fd=62)
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51955 (fd=63)
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51953 (fd=61)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=63) from 127.0.0.1:51955
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=64) from 127.0.0.1:51956
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51956 (fd=64)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51957 (fd=65)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=65) from 127.0.0.1:51957
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=66) from 127.0.0.1:51958
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51958 (fd=66)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=67) from 127.0.0.1:51959
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51960 (fd=68)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=68) from 127.0.0.1:51960
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=69) from 127.0.0.1:51961
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51961 (fd=69)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51959 (fd=67)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=70) from 127.0.0.1:51962
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51962 (fd=70)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=71) from 127.0.0.1:51963
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51963 (fd=71)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=72) from 127.0.0.1:51964
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=73) from 127.0.0.1:51965
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51965 (fd=73)
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51964 (fd=72)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=74) from 127.0.0.1:51966
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51966 (fd=74)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=75) from 127.0.0.1:51967
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51967 (fd=75)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=76) from 127.0.0.1:51968
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51968 (fd=76)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=77) from 127.0.0.1:51969
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51969 (fd=77)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=78) from 127.0.0.1:51970
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=79) from 127.0.0.1:51971
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51970 (fd=78)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=80) from 127.0.0.1:51972
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51971 (fd=79)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51972 (fd=80)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=81) from 127.0.0.1:51973
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=82) from 127.0.0.1:51974
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51974 (fd=82)
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51973 (fd=81)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=83) from 127.0.0.1:51975
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51975 (fd=83)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=84) from 127.0.0.1:51976
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51976 (fd=84)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=85) from 127.0.0.1:51977
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51977 (fd=85)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=86) from 127.0.0.1:51978
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51978 (fd=86)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=87) from 127.0.0.1:51979
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51979 (fd=87)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=88) from 127.0.0.1:51980
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=89) from 127.0.0.1:51981
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51980 (fd=88)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51981 (fd=89)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=90) from 127.0.0.1:51982
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51982 (fd=90)
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=91) from 127.0.0.1:51983
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=92) from 127.0.0.1:51984
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51983 (fd=91)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51984 (fd=92)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=93) from 127.0.0.1:51985
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51985 (fd=93)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=94) from 127.0.0.1:51986
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51986 (fd=94)
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=95) from 127.0.0.1:51987
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51987 (fd=95)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=96) from 127.0.0.1:51988
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51988 (fd=96)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=97) from 127.0.0.1:51989
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51989 (fd=97)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=98) from 127.0.0.1:51990
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=99) from 127.0.0.1:51991
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51991 (fd=99)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51990 (fd=98)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=100) from 127.0.0.1:51992
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51992 (fd=100)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=101) from 127.0.0.1:51993
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51993 (fd=101)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=102) from 127.0.0.1:51994
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51994 (fd=102)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51995 (fd=103)
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=103) from 127.0.0.1:51995
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=104) from 127.0.0.1:51996
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51996 (fd=104)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=7 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51997 (fd=7)
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=7) from 127.0.0.1:51997
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH alice writer123
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=6 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=9 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=11 cleaned up
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=8 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=10 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=12 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=14 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=15 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=13 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=16 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=17 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=18 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=19 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=22 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=23 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=21 cleaned up
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=20 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=24 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=27 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=29 cleaned up
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=28 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=26 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=25 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=33 cleaned up
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=31 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=34 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=36 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=30 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=35 cleaned up
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=32 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=37 cleaned up
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=38 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=42 cleaned up
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=39 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=44 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=40 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=41 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=45 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=43 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=49 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=46 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=50 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=53 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=52 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=48 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=47 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=54 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=55 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=51 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=58 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=56 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=57 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=59 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=61 cleaned up
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=63 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=64 cleaned up
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=60 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: INCR stress_counter
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=62 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=66 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=65 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=67 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=70 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=69 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=68 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=73 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=71 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=72 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=77 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=74 cleaned up
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=76 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=78 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=75 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=82 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=80 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=79 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=85 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=84 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=81 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=83 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=86 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=90 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=87 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=89 cleaned up
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=88 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=94 cleaned up
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=91 cleaned up
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=96 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=93 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=92 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=95 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=98 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=97 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=100 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=99 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=102 cleaned up
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=101 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=103 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=7 cleaned up
+[2026-05-01 20:31:57] [CMD] [alice] CMD: QUIT
+[2026-05-01 20:31:57] [QUIT] [alice] Client issued QUIT
+[2026-05-01 20:31:57] [THREAD] [alice] Thread for fd=104 cleaned up
+[2026-05-01 20:31:57] [ACCEPT] [server] Client accepted (fd=6) from 127.0.0.1:51998
+[2026-05-01 20:31:57] [CONNECT] [unknown] New connection from 127.0.0.1:51998 (fd=6)
+[2026-05-01 20:31:57] [CMD] [unauthenticated] CMD: AUTH admin admin123
+[2026-05-01 20:31:57] [CMD] [admin] CMD: GET stress_counter
+[2026-05-01 20:31:58] [CMD] [admin] CMD: QUIT
+[2026-05-01 20:31:58] [QUIT] [admin] Client issued QUIT
+[2026-05-01 20:31:58] [THREAD] [admin] Thread for fd=6 cleaned up
+[2026-05-01 20:31:58] [ACCEPT] [server] Client accepted (fd=6) from 127.0.0.1:51999
+[2026-05-01 20:31:58] [CONNECT] [unknown] New connection from 127.0.0.1:51999 (fd=6)
+[2026-05-01 20:31:58] [CMD] [unauthenticated] CMD: AUTH admin admin123
+[2026-05-01 20:31:58] [CMD] [admin] CMD: BGSAVE
+[2026-05-01 20:31:58] [CMD] [admin] CMD: SAVE
+[2026-05-01 20:31:58] [CMD] [admin] CMD: QUIT
+[2026-05-01 20:31:58] [QUIT] [admin] Client issued QUIT
+[2026-05-01 20:31:58] [THREAD] [admin] Thread for fd=6 cleaned up
+[2026-05-01 20:32:04] [SHUTDOWN] [server] Saving data before exit...
+[2026-05-01 20:32:04] [SHUTDOWN] [server] Saved 1 key(s) to dump.rdb
+[2026-05-01 20:32:04] [SHUTDOWN] [server] ═══ Mini Redis Server stopped ═══
+[2026-05-01 20:33:10] [START] [server] ═══ Mini Redis Server starting ═══
+[2026-05-01 20:33:10] [INIT] [server] Signal handlers registered
+[2026-05-01 20:33:10] [INIT] [server] ACL users loaded from users.conf
+[2026-05-01 20:33:10] [INIT] [server] In-memory hash table created (256 buckets)
+[2026-05-01 20:33:10] [INIT] [server] Client semaphore initialized (max=100)
+[2026-05-01 20:33:10] [RESTORE] [server] Restored 1 key(s) from dump.rdb
+[2026-05-01 20:33:10] [INIT] [server] Background expiry thread started
+[2026-05-01 20:33:10] [READY] [server] Listening on port 6379 (fd=5)
+[2026-05-01 20:33:36] [ACCEPT] [server] Client accepted (fd=6) from 127.0.0.1:52080
+[2026-05-01 20:33:36] [CONNECT] [unknown] New connection from 127.0.0.1:52080 (fd=6)
+[2026-05-01 20:33:43] [CMD] [unauthenticated] CMD: AUTH admin admin123
+[2026-05-01 20:33:50] [CMD] [admin] CMD: quit
+[2026-05-01 20:33:50] [QUIT] [admin] Client issued QUIT
+[2026-05-01 20:33:50] [THREAD] [admin] Thread for fd=6 cleaned up
+[2026-05-01 20:33:53] [SHUTDOWN] [server] Saving data before exit...
+[2026-05-01 20:33:53] [SHUTDOWN] [server] Saved 1 key(s) to dump.rdb
+[2026-05-01 20:33:53] [SHUTDOWN] [server] ═══ Mini Redis Server stopped ═══

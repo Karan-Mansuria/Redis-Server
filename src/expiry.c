@@ -46,7 +46,6 @@ void *expiry_thread_func(void *arg)
         sleep(1);
 
         /*
-        /*
          * Re-check shutdown_flag after waking — the server may have shut down
          * while we were sleeping. Avoids locking a mutex that may be destroyed.
          */
