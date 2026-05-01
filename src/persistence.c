@@ -321,7 +321,7 @@ void bgsave_async(HashTable *ht, char *response_buf, size_t response_size) {
         int saved = save_snapshot(ht, DUMP_FILE);
 
         // Notify parent via pipe
-        // OS Concept 6: IPC — write to pipe
+
         if (saved >= 0) {
             char done_msg[32];
             snprintf(done_msg, sizeof(done_msg), "DONE:%d", saved);
